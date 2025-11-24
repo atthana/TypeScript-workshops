@@ -17,5 +17,48 @@ Learning TS with Framework
 
 
 ### workshops
-- workshop_day1: just a simple project to get started with TS
-- workshop_day2: xx
+- workshop_day1: Just a simple project to get started with TS
+- workshop_day2: Create TS project.
+    1. `npm init -y`             # Initialize package.json in current folder
+    2. `npm i ts-node-dev -D`    # Install ts-node-dev as dev dependency (ถ้าไม่ใส่ -D จะเป็น dependency เฉยๆนะ ไม่ใช่ DevDependencies)
+    3. Edit in package.json:
+        ```
+        "main": "src/app.ts",
+        "scripts": {
+            "start": "ts-node-dev --respawn --transpile-only src/app.ts",
+        }
+        ```
+    4. Create folder `src` + new file `app.ts`
+    5. Config tsconfig.json (ถ้าใช้ framework ไม่ต้องทำนะ แต่นี่ทำเองไง จะได้รู้ basic)
+        ```
+        npx tsc --init      # Initialize tsconfig.json
+        ```
+
+        แก้ไข tsconfig.json:
+        ```
+        // Language and Environment
+        "target": "ES2020",
+
+        // Modules
+        "module": "commonjs",
+        "rootDir": "./src",
+        "moduleResolution": "node",
+
+        // JavaScript Support
+        "allowJs": true,
+        "outDir": "./dist",
+        "noEmitOnError": true,
+
+        // Interop Constraints
+        "esModuleInterop": true,
+        "forceConsistentCasingInFileNames": true,
+
+        // Type Checking
+        "skipLibCheck": true,
+
+        "include": ["src/**/*.ts"],
+        "exclude": ["node_modules"],
+
+        ```
+    6. npm run dev      # Run the project (จะขึ้นตามที่มี data ใน app.ts ล่ะจ้า)
+        
