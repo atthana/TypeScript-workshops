@@ -1,0 +1,11 @@
+{
+  "main": "dist/index.js",
+  "scripts": {
+    "start": "ts-node-dev --respawn --transpile-only src/index.ts",
+    "build": "tsc src/index.ts --outDir dist/index.js"
+  },
+
+  "dependencies": {
+    "ts-node-dev": "^2.0.0"
+  }
+}
