@@ -16,5 +16,9 @@ export const routes: Routes = [
     {
         path: 'about',
         loadComponent: () => import('./feature/about/about.component').then((m) => m.AboutComponent)
+    },
+    {
+        path: '**',
+        loadComponent: () => import('./shared/components/not-found/not-found/not-found.component').then((m) => m.NotFoundComponent)
     }
 ];
