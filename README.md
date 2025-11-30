@@ -63,6 +63,8 @@ Learning TS with Framework
     6. npm run dev      # Run the project (จะขึ้นตามที่มี data ใน app.ts ล่ะจ้า)
         
 - workshop_day7_angular: Create Angular project.
+    Path: `Path: /Users/atthana/Desktop/Private_Q/Trainings/19_Typescript_IT_Genius_15Feb25/workshops/workshop_day7_angular/basic-angular-typescript`
+    
     1. `ng new basic-angular-typescript`
     2. `cd basic-angular-typescript`
     3. `ng s` or `npm run start`
