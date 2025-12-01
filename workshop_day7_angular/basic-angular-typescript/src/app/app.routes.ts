@@ -33,26 +33,26 @@ export const routes: Routes = [
             },
         ]
     },
-    // {
-    //     path: 'admin',
-    //     loadComponent: () => import('./shared/components/layouts/admin-layout/admin-layout.component').then(m => m.AdminLayoutComponent),
-    //     children: [
-    //         {
-    //             path: '',
-    //             redirectTo: 'dashboard',
-    //             pathMatch: 'full',
-    //         },
-    //         {
-    //             path: 'dashboard',
-    //             loadComponent: () => import('./features/dashboard/dashboard.component').then(m => m.DashboardComponent),
-    //             data: {
-    //                 title: 'แดชบอร์ด | Basic Angular App',
-    //                 description: 'แดชบอร์ดของระบบ',
-    //                 keywords: 'แดชบอร์ด, ระบบ, แอพพลิเคชั่น, งานบริการ'
-    //             }
-    //         }
-    //     ],
-    // },
+    {
+        path: 'admin',
+        loadComponent: () => import('./shared/components/layouts/admin-layout/admin-layout.component').then(m => m.AdminLayoutComponent),
+        children: [
+            {
+                path: '',
+                redirectTo: 'dashboard',
+                pathMatch: 'full',
+            },
+            {
+                path: 'dashboard',
+                loadComponent: () => import('./features/dashboard/dashboard.component').then(m => m.DashboardComponent),
+                data: {
+                    title: 'แดชบอร์ด | Basic Angular App',
+                    description: 'แดชบอร์ดของระบบ',
+                    keywords: 'แดชบอร์ด, ระบบ, แอพพลิเคชั่น, งานบริการ'
+                }
+            }
+        ],
+    },
     {
         path: 'login',
         loadComponent: () => import('./features/login/login.component').then(m => m.LoginComponent),
@@ -62,24 +62,24 @@ export const routes: Routes = [
             keywords: 'เข้าสู่ระบบ, ระบบ, แอพพลิเคชั่น, งานบริการ'
         }
     },
-    // {
-    //     path: 'register',
-    //     loadComponent: () => import('./features/register/register.component').then(m => m.RegisterComponent),
-    //     data: {
-    //         title: 'สมัครสมาชิก | Basic Angular App',
-    //         description: 'สมัครสมาชิก',
-    //         keywords: 'สมัครสมาชิก, ระบบ, แอพพลิเคชั่น, งานบริการ'
-    //     }
-    // },
-    // {
-    //     path: 'fogotpassword',
-    //     loadComponent: () => import('./features/fogotpassword/fogotpassword.component').then(m => m.FogotpasswordComponent),
-    //     data: {
-    //         title: 'ลืมรหัสผ่าน | Basic Angular App',
-    //         description: 'ลืมรหัสผ่าน',
-    //         keywords: 'ลืมรหัสผ่าน, ระบบ, แอพพลิเคชั่น, งานบริการ'
-    //     }
-    // },
+    {
+        path: 'register',
+        loadComponent: () => import('./features/register/register.component').then(m => m.RegisterComponent),
+        data: {
+            title: 'สมัครสมาชิก | Basic Angular App',
+            description: 'สมัครสมาชิก',
+            keywords: 'สมัครสมาชิก, ระบบ, แอพพลิเคชั่น, งานบริการ'
+        }
+    },
+    {
+        path: 'forgotpassword',
+        loadComponent: () => import('./features/forgotpassword/forgotpassword.component').then(m => m.ForgotpasswordComponent),
+        data: {
+            title: 'ลืมรหัสผ่าน | Basic Angular App',
+            description: 'ลืมรหัสผ่าน',
+            keywords: 'ลืมรหัสผ่าน, ระบบ, แอพพลิเคชั่น, งานบริการ'
+        }
+    },
     {
         path: '**',
         loadComponent: () => import('./shared/components/not-found/not-found/not-found.component').then(m => m.NotFoundComponent),
