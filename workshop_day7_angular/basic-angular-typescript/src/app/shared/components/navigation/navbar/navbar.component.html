@@ -1,6 +1,72 @@
-<nav>
-    <a routerLink="/" class="text-blue-500 cursor-pointer mr-4">Home</a>
-    <a routerLink="/contact" class="text-blue-500 cursor-pointer mr-4">Contact</a>
-    <a routerLink="/about" class="text-blue-500 cursor-pointer mr-4">About</a>
-    <a routerLink="/login" class="text-blue-500 cursor-pointer mr-4">Login</a>
-</nav>
+<nav class="fixed top-0 left-0 right-0 bg-white shadow-md w-full z-50 transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-16">
+        <!-- Brand/logo -->
+        <div class="flex-shrink-0 flex items-center">
+          <a routerLink="/" class="text-xl font-bold text-blue-600">Angular</a>
+        </div>
+        
+        <!-- Desktop menu -->
+        <div class="hidden md:flex items-center justify-end space-x-4">
+          <a routerLink="/" routerLinkActive="text-blue-600 font-bold" [routerLinkActiveOptions]="{exact: true}" class="hover:text-blue-500 px-3 py-2 rounded-md">หน้าหลัก</a>
+          <a routerLink="/about" routerLinkActive="text-blue-600 font-medium" class="hover:text-blue-500 px-3 py-2 rounded-md">เกี่ยวกับเรา</a>
+          
+          <!-- Services Dropdown -->
+          <div class="relative" (mouseenter)="onMouseEnter()" (mouseleave)="onMouseLeave()">
+            <button class="hover:text-blue-500 px-3 py-2 rounded-md flex items-center space-x-1">
+              <span>บริการ</span>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            
+            <!-- Dropdown Menu -->
+            <div *ngIf="showServicesMenu" class="absolute left-0 mt-1 w-52 bg-white rounded-md shadow-lg py-1 z-10">
+              <a routerLink="/services/web-development" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-600">พัฒนาเว็บแอปพลิเคชัน</a>
+              <a routerLink="/services/mobile-development" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-600">พัฒนาแอปพลิเคชันมือถือ</a>
+              <a routerLink="/services/consulting" class="block px-4 py-2 hover:bg-blue-50 hover:text-blue-600">บริการให้คำปรึกษา</a>
+            </div>
+          </div>
+          
+          <a routerLink="/contact" routerLinkActive="text-blue-600 font-medium" class="hover:text-blue-500 px-3 py-2 rounded-md">ติดต่อเรา</a>
+          <a routerLink="/login" routerLinkActive="text-blue-600 font-medium" class="ml-4 bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md">เข้าสู่ระบบ</a>
+        </div>
+        
+        <!-- Mobile menu button -->
+        <div class="md:hidden flex items-center">
+          <button type="button" (click)="toggleMobileMenu()" class="text-gray-500 hover:text-blue-500 focus:outline-none">
+            <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Mobile menu -->
+    <div class="md:hidden" [ngClass]="{'block': isMobileMenuOpen, 'hidden': !isMobileMenuOpen}">
+      <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+        <a routerLink="/" routerLinkActive="text-blue-600 font-medium bg-blue-50" [routerLinkActiveOptions]="{exact: true}" class="block text-gray-700 hover:text-blue-500 px-3 py-2 rounded-md">หน้าหลัก</a>
+        <a routerLink="/about" routerLinkActive="text-blue-600 font-medium bg-blue-50" class="block text-gray-700 hover:text-blue-500 px-3 py-2 rounded-md">เกี่ยวกับเรา</a>
+        
+        <!-- Mobile Services Menu -->
+        <div>
+          <button (click)="toggleServicesMenu()" class="flex items-center justify-between w-full text-left text-gray-700 hover:text-blue-500 px-3 py-2 rounded-md">
+            <span>บริการ</span>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 transition-transform" [ngClass]="{'rotate-180': showMobileServicesMenu}" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          <div *ngIf="showMobileServicesMenu" class="pl-4 mt-1 space-y-1 border-l-2 border-blue-100 ml-3">
+            <a routerLink="/services/web-development" class="block text-gray-700 hover:text-blue-500 px-3 py-2 rounded-md">พัฒนาเว็บแอปพลิเคชัน</a>
+            <a routerLink="/services/mobile-development" class="block text-gray-700 hover:text-blue-500 px-3 py-2 rounded-md">พัฒนาแอปพลิเคชันมือถือ</a>
+            <a routerLink="/services/consulting" class="block text-gray-700 hover:text-blue-500 px-3 py-2 rounded-md">บริการให้คำปรึกษา</a>
+          </div>
+        </div>
+        
+        <a routerLink="/contact" routerLinkActive="text-blue-600 font-medium bg-blue-50" class="block text-gray-700 hover:text-blue-500 px-3 py-2 rounded-md">ติดต่อเรา</a>
+        <a routerLink="/login" routerLinkActive="text-blue-600 font-medium bg-blue-50" class="mt-2 w-full bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-md">เข้าสู่ระบบ</a>
+      </div>
+    </div>
+  </nav>
+  
